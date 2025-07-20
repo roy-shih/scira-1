@@ -229,7 +229,7 @@ const UserProfile = memo(
                           <Crown size={14} className="text-foreground" />
                         </div>
                         <div className="flex flex-col">
-                          <span className="font-medium text-foreground text-sm">Scira Pro</span>
+                          <span className="font-medium text-foreground text-sm">Aastra Pro</span>
                           <span className="text-[10px] text-muted-foreground">Unlimited access to all features</span>
                         </div>
                       </div>
@@ -297,7 +297,7 @@ const UserProfile = memo(
             <DropdownMenuSeparator />
 
             {/* Social and External Links */}
-            <DropdownMenuItem className="cursor-pointer" asChild>
+            {/* <DropdownMenuItem className="cursor-pointer" asChild>
               <a
                 href={'https://api.scira.ai/'}
                 target="_blank"
@@ -351,7 +351,7 @@ const UserProfile = memo(
                 <VercelIcon size={14} />
                 <span>Deploy with Vercel</span>
               </a>
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
             <DropdownMenuItem className="cursor-pointer" asChild>
               <a
                 href={'https://scira.userjot.com'}

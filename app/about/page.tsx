@@ -122,7 +122,7 @@ export default function AboutPage() {
               <div className="flex items-center gap-2 text-amber-800 dark:text-amber-200">
                 <ShieldCheck className="h-4 w-4" />
                 <span className="text-sm font-medium">
-                  Scira is not connected to any cryptocurrency tokens or coins. We are purely an AI search engine.
+                  Aastra is not connected to any cryptocurrency tokens or coins. We are purely an AI search engine.
                 </span>
               </div>
               <button
@@ -159,7 +159,7 @@ export default function AboutPage() {
                 Terms of Service
               </h3>
               <p className="text-xs text-muted-foreground">
-                By using Scira, you agree to our Terms of Service which outline the rules for using our platform. This
+                By using Aastra, you agree to our Terms of Service which outline the rules for using our platform. This
                 includes guidelines on acceptable use, intellectual property rights, and limitations of liability.
               </p>
               <Link href="/terms" className="text-xs text-primary hover:underline inline-flex items-center">
@@ -212,13 +212,13 @@ export default function AboutPage() {
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/scira.png"
-              alt="Scira"
+              alt="Aastra"
               width={100}
               height={100}
               className="size-7 invert dark:invert-0"
               quality={100}
             />
-            <span className="font-normal font-be-vietnam-pro">Scira</span>
+            <span className="font-normal font-be-vietnam-pro">Aastra</span>
           </Link>
 
           <nav className="flex items-center gap-8">
@@ -264,7 +264,7 @@ export default function AboutPage() {
                     quality={100}
                   />
                 </div>
-                <span className="text-4xl font-light tracking-tight">Scira</span>
+                <span className="text-4xl font-light tracking-tight">Aastra</span>
               </Link>
 
               <div className="space-y-5">
@@ -394,7 +394,7 @@ export default function AboutPage() {
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-medium tracking-tight">RAG & Search Grounding</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Scira combines RAG and search grounding to deliver accurate, up-to-date answers from reliable sources.
+                Aastra combines RAG and search grounding to deliver accurate, up-to-date answers from reliable sources.
               </p>
             </div>
 
@@ -748,7 +748,7 @@ export default function AboutPage() {
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-medium tracking-tight">Built For Everyone</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Whether you need quick answers or in-depth research, Scira adapts to your needs
+                Whether you need quick answers or in-depth research, Aastra adapts to your needs
               </p>
             </div>
 
@@ -966,7 +966,7 @@ export default function AboutPage() {
 
                 <div className="mb-8">
                   <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100 mb-3 tracking-[-0.01em]">
-                    Scira Pro
+                    Aastra Pro
                   </h3>
                   <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-6 leading-relaxed">
                     Everything you need for unlimited usage
@@ -1017,12 +1017,12 @@ export default function AboutPage() {
                 <div className="flex-1 space-y-2 text-center sm:text-left">
                   <h3 className="font-medium text-base">Student Discount: $10 off Pro Plan</h3>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Students can get the Pro plan for just $5/month. Email zaid@scira.ai with your student ID and a
-                    brief description of how you use Scira for your studies.
+                    Students can get the Pro plan for just $5/month. Email contact@unieai.com with your student ID and a
+                    brief description of how you use Aastra for your studies.
                   </p>
                   <div className="pt-1">
                     <a
-                      href="mailto:zaid@scira.ai?subject=Student%20Discount%20Request"
+                      // href="mailto:zaid@scira.ai?subject=Student%20Discount%20Request"
                       className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-zinc-300 dark:border-zinc-700 bg-background hover:bg-zinc-100 dark:hover:bg-zinc-800 h-9 px-4 py-2"
                     >
                       Request Student Discount
@@ -1082,14 +1082,14 @@ export default function AboutPage() {
           >
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-medium tracking-tight">Frequently Asked Questions</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">Find answers to common questions about Scira</p>
+              <p className="text-muted-foreground max-w-2xl mx-auto">Find answers to common questions about Aastra</p>
             </div>
 
             <ProAccordion type="single" collapsible className="w-full">
               <ProAccordionItem value="item-1">
-                <ProAccordionTrigger>What is Scira?</ProAccordionTrigger>
+                <ProAccordionTrigger>What is Aastra?</ProAccordionTrigger>
                 <ProAccordionContent>
-                  Scira is a minimalistic open-source AI-powered search engine that uses RAG (Retrieval-Augmented
+                  Aastra is a minimalistic open-source AI-powered search engine that uses RAG (Retrieval-Augmented
                   Generation) and search grounding to provide accurate, up-to-date answers from reliable sources.
                 </ProAccordionContent>
               </ProAccordionItem>
@@ -1106,7 +1106,7 @@ export default function AboutPage() {
                 <ProAccordionTrigger>Is there a student discount?</ProAccordionTrigger>
                 <ProAccordionContent>
                   Yes, students can get $10 off the Pro plan, bringing it down to $5/month. To apply, email
-                  zaid@scira.ai with your student verification details and a brief description of how you use Scira for
+                  contact@unieai.com with your student verification details and a brief description of how you use Aastra for
                   your academic work or studies.
                 </ProAccordionContent>
               </ProAccordionItem>
@@ -1120,17 +1120,17 @@ export default function AboutPage() {
               </ProAccordionItem>
 
               <ProAccordionItem value="item-5">
-                <ProAccordionTrigger>What AI models does Scira use?</ProAccordionTrigger>
+                <ProAccordionTrigger>What AI models does Aastra use?</ProAccordionTrigger>
                 <ProAccordionContent>
-                  Scira uses a range of advanced AI models including Grok 3.0, Claude 3.7 Sonnet, OpenAI GPT 4o, Gemini
+                  Aastra uses a range of advanced AI models including Grok 3.0, Claude 3.7 Sonnet, OpenAI GPT 4o, Gemini
                   2.5 Pro, and more to provide the best possible answers.
                 </ProAccordionContent>
               </ProAccordionItem>
 
               <ProAccordionItem value="item-6">
-                <ProAccordionTrigger>How does Scira ensure information accuracy?</ProAccordionTrigger>
+                <ProAccordionTrigger>How does Aastra ensure information accuracy?</ProAccordionTrigger>
                 <ProAccordionContent>
-                  Scira combines RAG technology with search grounding to retrieve information from reliable sources and
+                  Aastra combines RAG technology with search grounding to retrieve information from reliable sources and
                   verify it before providing answers. Each response includes source attribution.
                 </ProAccordionContent>
               </ProAccordionItem>
@@ -1138,8 +1138,8 @@ export default function AboutPage() {
               <ProAccordionItem value="item-7">
                 <ProAccordionTrigger>How do I apply for the student discount?</ProAccordionTrigger>
                 <ProAccordionContent>
-                  Email zaid@scira.ai with a copy of your student ID or enrollment proof. In your email, include a brief
-                  description of how you use or plan to use Scira for your academic work or studies. Once verified,
+                  Email contact@unieai.com with a copy of your student ID or enrollment proof. In your email, include a brief
+                  description of how you use or plan to use Aastra for your academic work or studies. Once verified,
                   you&apos;ll receive a special discount code for $10 off the Pro plan.
                 </ProAccordionContent>
               </ProAccordionItem>
@@ -1149,7 +1149,7 @@ export default function AboutPage() {
               <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
                 Have more questions?{' '}
                 <a
-                  href="mailto:zaid@scira.ai"
+                  href="mailto:contact@unieai.com"
                   className="text-black dark:text-white hover:underline underline-offset-4 decoration-zinc-400 dark:decoration-zinc-600 transition-colors duration-200"
                 >
                   Get in touch
@@ -1165,7 +1165,7 @@ export default function AboutPage() {
         <div className="container max-w-screen-xl mx-auto py-12 px-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              <Image src="/scira.png" alt="Scira" width={32} height={32} className="h-8 w-8 invert dark:invert-0" />
+              <Image src="/scira.png" alt="Aastra" width={32} height={32} className="h-8 w-8 invert dark:invert-0" />
               <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} All rights reserved.</p>
             </div>
 

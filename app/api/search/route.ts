@@ -375,39 +375,39 @@ export async function POST(req: Request) {
         },
         tools: {
           // Stock & Financial Tools
-          stock_chart: stockChartTool,
-          currency_converter: currencyConverterTool,
-          coin_data: coinDataTool,
-          coin_data_by_contract: coinDataByContractTool,
-          coin_ohlc: coinOhlcTool,
+          // stock_chart: stockChartTool,
+          // currency_converter: currencyConverterTool,
+          // coin_data: coinDataTool,
+          // coin_data_by_contract: coinDataByContractTool,
+          // coin_ohlc: coinOhlcTool,
 
           // Search & Content Tools
-          x_search: xSearchTool,
-          web_search: webSearchTool(dataStream),
-          academic_search: academicSearchTool,
-          youtube_search: youtubeSearchTool,
-          reddit_search: redditSearchTool,
-          retrieve: retrieveTool,
+          // x_search: xSearchTool,
+          // web_search: webSearchTool(dataStream),
+          // academic_search: academicSearchTool,
+          // youtube_search: youtubeSearchTool,
+          // reddit_search: redditSearchTool,
+          // retrieve: retrieveTool,
 
           // Media & Entertainment
-          movie_or_tv_search: movieTvSearchTool,
-          trending_movies: trendingMoviesTool,
-          trending_tv: trendingTvTool,
+          // movie_or_tv_search: movieTvSearchTool,
+          // trending_movies: trendingMoviesTool,
+          // trending_tv: trendingTvTool,
 
           // Location & Maps
-          find_place_on_map: findPlaceOnMapTool,
-          nearby_places_search: nearbyPlacesSearchTool,
-          get_weather_data: weatherTool,
+          // find_place_on_map: findPlaceOnMapTool,
+          // nearby_places_search: nearbyPlacesSearchTool,
+          // get_weather_data: weatherTool,
 
           // Utility Tools
-          text_translate: textTranslateTool,
-          code_interpreter: codeInterpreterTool,
-          track_flight: flightTrackerTool,
-          datetime: datetimeTool,
-          mcp_search: mcpSearchTool,
-          memory_manager: memoryManagerTool,
-          extreme_search: extremeSearchTool(dataStream),
-          greeting: greetingTool,
+          // text_translate: textTranslateTool,
+          // code_interpreter: codeInterpreterTool,
+          // track_flight: flightTrackerTool,
+          // datetime: datetimeTool,
+          // mcp_search: mcpSearchTool,
+          // memory_manager: memoryManagerTool,
+          // extreme_search: extremeSearchTool(dataStream),
+          // greeting: greetingTool,
         },
         experimental_repairToolCall: async ({ toolCall, tools, parameterSchema, error }) => {
           if (NoSuchToolError.isInstance(error)) {

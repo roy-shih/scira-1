@@ -13,23 +13,23 @@ import { Toaster } from 'sonner';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://scira.ai'),
+  metadataBase: new URL('https://unieai.com'),
   title: {
-    default: 'Scira AI',
-    template: '%s | Scira AI',
-    absolute: 'Scira AI',
+    default: 'Aastra',
+    template: '%s | Aastra',
+    absolute: 'UnieAI',
   },
-  description: 'Scira AI is a minimalistic AI-powered search engine that helps you find information on the internet.',
+  description: 'Aastra is a minimalistic AI-powered search engine that helps you find information on the internet.',
   openGraph: {
-    url: 'https://scira.ai',
-    siteName: 'Scira AI',
+    url: 'https://unieai.com',
+    siteName: 'Aastra',
   },
   keywords: [
-    'scira.ai',
+    'unieai.com',
     'ai search engine',
-    'scira ai',
-    'Scira AI',
-    'scira AI',
+    'unie ai',
+    'uni ai',
+    'uniai',
     'SCIRA.AI',
     'scira github',
     'ai search engine',

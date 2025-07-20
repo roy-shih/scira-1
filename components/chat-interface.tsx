@@ -557,8 +557,8 @@ const ChatInterface = memo(
           <div className={`w-full max-w-[95%] sm:max-w-2xl space-y-6 p-0 mx-auto transition-all duration-300`}>
             {status === 'ready' && messages.length === 0 && (
               <div className="text-center m-0 mb-2">
-                <h1 className="text-3xl sm:text-5xl !mb-0 text-neutral-800 dark:text-neutral-100 font-be-vietnam-pro! font-light tracking-tighter">
-                  scira
+                <h1 className="text-3xl sm:text-5xl !mb-0 pb-5 text-neutral-800 dark:text-neutral-100 font-be-vietnam-pro! font-light tracking-tighter">
+                  Aastra
                 </h1>
               </div>
             )}

@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const user = await getUser();
   // if not chat, return Scira Chat
   if (!chat) {
-    return { title: 'Scira Chat' };
+    return { title: 'Aastra Chat' };
   }
   let title;
   // if chat is public, return title
@@ -31,21 +31,21 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   // if chat is private, return title
   if (chat.visibility === 'private') {
     if (!user) {
-      title = 'Scira Chat';
+      title = 'Aastra Chat';
     }
     if (user!.id !== chat.userId) {
-      title = 'Scira Chat';
+      title = 'Aastra Chat';
     }
     title = chat.title;
   }
   return {
     title: title,
-    description: 'A search in scira.ai',
+    description: 'A search in Aastra.ai',
     openGraph: {
       title: title,
       url: `https://scira.ai/search/${id}`,
-      description: 'A search in scira.ai',
-      siteName: 'scira.ai',
+      description: 'A search in Aastra.ai',
+      siteName: 'Aastra.ai',
       images: [
         {
           url: `https://scira.ai/api/og/chat/${id}`,
@@ -58,9 +58,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       card: 'summary_large_image',
       title: title,
       url: `https://scira.ai/search/${id}`,
-      description: 'A search in scira.ai',
-      siteName: 'scira.ai',
-      creator: '@sciraai',
+      description: 'A search in Aastra.ai',
+      siteName: 'Aastra.ai',
+      creator: '@UnieAI',
       images: [
         {
           url: `https://scira.ai/api/og/chat/${id}`,

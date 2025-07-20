@@ -71,16 +71,12 @@ export async function getCurrentUser() {
   }
 }
 
-export async function suggestQuestions(history: any[]) {
-  'use server';
+const questionSchema = z.object({
+  questions: z.array(z.string()),
+});
 
-  console.log(history);
 
-  const { object } = await generateObject({
-    model: scira.languageModel('scira-nano'),
-    temperature: 0,
-    maxTokens: 512,
-    system: `You are a search engine follow up query/questions generator. You MUST create EXACTLY 3 questions for the search engine based on the message history.
+const oldPrompt=`You are a search engine follow up query/questions generator. You MUST create EXACTLY 3 questions for the search engine based on the message history.
 
 ### Question Generation Guidelines:
 - Create exactly 3 questions that are open-ended and encourage further discussion
@@ -114,17 +110,186 @@ export async function suggestQuestions(history: any[]) {
 - Each question must be grammatically complete
 - Each question must end with a question mark
 - Questions must be diverse and not redundant
-- Do not include instructions or meta-commentary in the questions`,
-    messages: history,
-    schema: z.object({
-      questions: z.array(z.string()).describe('The generated questions based on the message history.'),
-    }),
+- Do not include instructions or meta-commentary in the questions
+### Examples:
+
+#### Input:
+[
+  { "role": "user", "content": "How to learn Python programming?" }
+]
+
+#### Output:
+{
+  "questions": [
+    "What are the best Python learning resources?",
+    "How do Python data structures compare to other languages?",
+    "What Python libraries are useful for beginners?"
+  ]
+}
+
+#### Input:
+[
+  { "role": "user", "content": "Current weather in Tokyo?" },
+  { "role": "assistant", "content": "The weather in Tokyo is sunny with a high of 28°C." }
+]
+
+#### Output:
+{
+  "questions": [
+    "What are popular summer festivals in Tokyo?",
+    "What historical sites are must-visit in Tokyo?",
+    "What is the cultural significance of Tokyo’s architecture?"
+  ]
+}
+
+### Now generate the output for the following input:
+`
+
+
+export async function suggestQuestions(history: any[]) {
+  'use server';
+
+  console.log(JSON.stringify(history));
+
+  const { text } = await generateText({
+    model: scira.languageModel('scira-nano'),
+    temperature: 0,
+    maxTokens: 512,
+    system:`You are a search engine follow up query/questions generator. You MUST create EXACTLY 3 questions for the search engine based on the message history.
+
+### Question Generation Guidelines:
+- Create exactly 3 questions that are open-ended and encourage further discussion
+- Questions must be concise (5-10 words each) but specific and contextually relevant
+- Each question must contain specific nouns, entities, or clear context markers
+- NEVER use pronouns (he, she, him, his, her, etc.) - always use proper nouns from the context
+- Questions must be related to tools available in the system
+- Questions should flow naturally from previous conversation
+- You are here to generate questions for the search engine not to use tools or run tools!!
+
+### Tool-Specific Question Types:
+- Web search: Focus on factual information, current events, or general knowledge
+- Academic: Focus on scholarly topics, research questions, or educational content
+- YouTube: Focus on tutorials, how-to questions, or content discovery
+- Social media (X/Twitter): Focus on trends, opinions, or social conversations
+- Code/Analysis: Focus on programming, data analysis, or technical problem-solving
+- Weather: Redirect to news, sports, or other non-weather topics
+- Location: Focus on culture, history, landmarks, or local information
+- Finance: Focus on market analysis, investment strategies, or economic topics
+
+### Context Transformation Rules:
+- For weather conversations → Generate questions about news, sports, or other non-weather topics
+- For programming conversations → Generate questions about algorithms, data structures, or code optimization
+- For location-based conversations → Generate questions about culture, history, or local attractions
+- For mathematical queries → Generate questions about related applications or theoretical concepts
+- For current events → Generate questions that explore implications, background, or related topics
+
+### Formatting Requirements:
+- No bullet points, numbering, or prefixes
+- No quotation marks around questions
+- Each question must be grammatically complete
+- Each question must end with a question mark
+- Questions must be diverse and not redundant
+- Do not include instructions or meta-commentary in the questions
+`,
+    prompt: `The conversation history is provided below:
+${JSON.stringify(history)}
+---
+
+Your output MUST follow this exact format:
+
+{
+  "questions": [
+    "First predicted question?",
+    "Second predicted question?",
+    "Third predicted question?"
+  ]
+}
+
+### Rules:
+- Do NOT repeat any previous questions.
+- Do NOT answer any questions.
+- Each question must be 5-10 words long.
+- Each question must be clear, specific, and open-ended.
+- Use nouns or named entities, NEVER pronouns.
+- The questions should naturally follow the previous conversation.
+- Only return the JSON object — nothing else.
+
+DO NOT repeat the user's question.Focus on encouraging further discussion by expanding or deepening the topic. Please answer follow the conversation historylanguage. Now generate the output for the following input:`,
   });
 
+  console.log('LLM Output:', text);
+
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch (e) {
+    throw new Error(`Failed to parse JSON: ${e}\nRaw output: ${text}`);
+  }
+
+  const validated = questionSchema.safeParse(parsed);
+  if (!validated.success) {
+    throw new Error(`Validation failed: ${JSON.stringify(validated.error.issues)}\nRaw output: ${text}`);
+  }
+
   return {
-    questions: object.questions,
+    questions: validated.data.questions,
   };
 }
+
+// export async function suggestQuestions(history: any[]) {
+//   'use server';
+
+//   console.log(history);
+
+//   const { object } = await generateObject({
+//     model: scira.languageModel('scira-nano'),
+//     temperature: 0,
+//     maxTokens: 512,
+//     system: `You are a search engine follow up query/questions generator. You MUST create EXACTLY 3 questions for the search engine based on the message history.
+
+// ### Question Generation Guidelines:
+// - Create exactly 3 questions that are open-ended and encourage further discussion
+// - Questions must be concise (5-10 words each) but specific and contextually relevant
+// - Each question must contain specific nouns, entities, or clear context markers
+// - NEVER use pronouns (he, she, him, his, her, etc.) - always use proper nouns from the context
+// - Questions must be related to tools available in the system
+// - Questions should flow naturally from previous conversation
+// - You are here to generate questions for the search engine not to use tools or run tools!!
+
+// ### Tool-Specific Question Types:
+// - Web search: Focus on factual information, current events, or general knowledge
+// - Academic: Focus on scholarly topics, research questions, or educational content
+// - YouTube: Focus on tutorials, how-to questions, or content discovery
+// - Social media (X/Twitter): Focus on trends, opinions, or social conversations
+// - Code/Analysis: Focus on programming, data analysis, or technical problem-solving
+// - Weather: Redirect to news, sports, or other non-weather topics
+// - Location: Focus on culture, history, landmarks, or local information
+// - Finance: Focus on market analysis, investment strategies, or economic topics
+
+// ### Context Transformation Rules:
+// - For weather conversations → Generate questions about news, sports, or other non-weather topics
+// - For programming conversations → Generate questions about algorithms, data structures, or code optimization
+// - For location-based conversations → Generate questions about culture, history, or local attractions
+// - For mathematical queries → Generate questions about related applications or theoretical concepts
+// - For current events → Generate questions that explore implications, background, or related topics
+
+// ### Formatting Requirements:
+// - No bullet points, numbering, or prefixes
+// - No quotation marks around questions
+// - Each question must be grammatically complete
+// - Each question must end with a question mark
+// - Questions must be diverse and not redundant
+// - Do not include instructions or meta-commentary in the questions`,
+//     messages: history,
+//     schema: z.object({
+//       questions: z.array(z.string()).describe('The generated questions based on the message history.'),
+//     }),
+//   });
+// console.log(object)
+//   return {
+//     questions: object.questions,
+//   };
+// }
 
 export async function checkImageModeration(images: any) {
   const { text } = await generateText({
@@ -260,7 +425,7 @@ const groupTools = {
 
 const groupInstructions = {
   web: `
-  You are an AI web search engine called Scira, designed to help users find information on the internet with no unnecessary chatter and more focus on the content and responsed with markdown format and the response guidelines below.
+  You are an AI web search engine called Aastra, designed to help users find information on the internet with no unnecessary chatter and more focus on the content and responsed with markdown format and the response guidelines below.
   'You MUST run the tool IMMEDIATELY on receiving any user message' before composing your response. **This is non-negotiable.**
   Today's Date: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit', weekday: 'short' })}
 
@@ -839,7 +1004,7 @@ const groupInstructions = {
   - Do not include images in responses`,
 
   chat: `
-  You are Scira, a helpful assistant that helps with the task asked by the user.
+  You are Aastra (made by UnieAI), a helpful assistant that helps with the task asked by the user.
   Today's date is ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit', weekday: 'short' })}.
 
   ### Guidelines:

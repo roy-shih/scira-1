@@ -43,7 +43,7 @@ const SciraLogoHeader = () => (
   <div className="flex items-center gap-2">
     <Image
       src="/scira.png"
-      alt="Scira"
+      alt="Aastra"
       className="size-7 invert dark:invert-0"
       width={100}
       height={100}
@@ -51,7 +51,7 @@ const SciraLogoHeader = () => (
       quality={100}
       priority
     />
-    <h2 className="text-xl font-normal font-be-vietnam-pro text-neutral-800 dark:text-neutral-200">Scira</h2>
+    <h2 className="text-xl font-normal font-be-vietnam-pro text-neutral-800 dark:text-neutral-200">Aastra</h2>
   </div>
 );
 

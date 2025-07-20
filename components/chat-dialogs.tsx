@@ -22,7 +22,7 @@ export const PostMessageUpgradeDialog = React.memo(({ open, onOpenChange }: Post
                 <Crown className="w-4 h-4 text-white dark:text-black" weight="fill" />
               </div>
               <div>
-                <h2 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Upgrade to Scira Pro</h2>
+                <h2 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Upgrade to Aastra Pro</h2>
                 <p className="text-sm text-neutral-500 dark:text-neutral-400">Get unlimited access to all features</p>
               </div>
             </div>
@@ -100,12 +100,12 @@ export const ApiAnnouncementDialog = React.memo(({ open, onOpenChange }: ApiAnno
               <div className="w-8 h-8 rounded-lg bg-white dark:bg-neutral-900 flex items-center justify-center border border-neutral-200 dark:border-neutral-700">
                 <img 
                   src="/scira.png" 
-                  alt="Scira" 
+                  alt="Aastra" 
                   className="w-5 h-5 object-contain"
                 />
               </div>
               <div>
-                <h2 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Introducing Scira AI API Platform</h2>
+                <h2 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Introducing UnieAI API Platform</h2>
                 <p className="text-sm text-neutral-500 dark:text-neutral-400">Powerful APIs for developers</p>
               </div>
             </div>
